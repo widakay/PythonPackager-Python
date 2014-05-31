@@ -7,6 +7,7 @@ render = web.template.render('templates/')
 urls = (
     '/word', 'word',
     '/upload', 'upload',
+    '/finalize', 'finalize',
     '/(.*)', 'index'
 )
 app = web.application(urls, globals())
@@ -31,6 +32,9 @@ class upload:
         web.debug(x['myfile'].file.read()) # Or use a file(-like) object
         raise web.seeother('/upload')
 
+class finalize:
+    def POST(self):
+        return "This will convert the uploaded files to an application..."
 
 class word:
     def GET(self):
